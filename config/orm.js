@@ -13,7 +13,7 @@ var orm = {
         })
     },
     insertOne: function(burger_name, devoured, date) {
-        var queryString = 'INSERT INTO burgers(burger_name, devoured, date) VALUES(??, ??, ??)'
+        var queryString = 'INSERT INTO burgers(burger_name, devoured, date) VALUES(?, ?, ?)'
         return new Promise(function(resolve, reject) {
             connection.query(queryString,[burger_name, devoured, date], function(error, result) {
                 if (error) {
@@ -25,7 +25,7 @@ var orm = {
         })
     },
     updateOne: function(whatToSet, setToWhat, where, is) {
-        var queryString = 'UPDATE burgers SET ?? = ?? WHERE ?? = ??'
+        var queryString = 'UPDATE burgers SET ?? = ? WHERE ?? = ?'
         return new Promise(function(resolve, reject) {
             connection.query(queryString,[whatToSet, setToWhat, where, is], function(error, result) {
                 if (error) {
