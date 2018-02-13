@@ -4,9 +4,7 @@ var router = express.Router()
 
 router.get('/', function(request, response) {
   burger.getTable(function(data) {
-    burger.getTable(function(data) {
-      response.render('index', { cats: data })
-    })
+    response.render('index', { cats: data })
   })
 })
 
