@@ -1,28 +1,28 @@
 var orm = require('../config/orm.js')
 
 var burger = {
-  getTable: function() {
+  getTable: function(cb) {
     orm.selectAll('burgers').then(function(result) {
       console.log(result)
-      return result
+      cb(result) //here
     }, function(err) {
       console.log(err)
     })
   },
   // by default, is not devoured
-  add: function(name) {
-    orm.insertOne(name, 0).then(function(result) {
+  add: function(name, cb) {
+    orm.insertOne(name, false).then(function(result) {
       console.log(result)
-      return result
+      cb(result) 
     }, function(err) {
       console.log(err)
     })
   },
   // Set devoured to true at burger with id
-  devour: function(id) {
-    orm.updateOne('devoured', 1, 'id', id).then(function(result) {
+  devour: function(id, cb) {
+    orm.updateOne('devoured', true, 'id', id).then(function(result) {
       console.log(result)
-      return result
+      cb(result)
     }, function(err) {
       console.log(err)
     })
